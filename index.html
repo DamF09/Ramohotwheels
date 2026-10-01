@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Nata</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top, #173b68 0%, #07101d 45%, #02050a 100%);
+    font-family:Segoe UI, Arial, sans-serif;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* FONDO */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,170,255,.12), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(0,100,255,.10), transparent 25%);
+}
+
+/* TITULO */
+
+.titulo{
+    text-align:center;
+    padding-top:35px;
+    position:relative;
+    z-index:2;
+}
+
+.titulo h1{
+    font-size:42px;
+    letter-spacing:4px;
+    text-shadow:
+        0 0 10px #00aaff,
+        0 0 30px #0077ff;
+}
+
+.titulo p{
+    margin-top:8px;
+    color:#bcdfff;
+    font-size:16px;
+}
+
+/* RAMO */
+
+.ramo{
+    width:650px;
+    max-width:95%;
+    height:620px;
+    margin:15px auto 0;
+    position:relative;
+}
+
+/* TALLOS */
+
+.tallos{
+    position:absolute;
+    bottom:90px;
+    left:50%;
+    width:300px;
+    height:390px;
+    transform:translateX(-50%);
+}
+
+.tallo{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:7px;
+    height:350px;
+    background:linear-gradient(to right,#07552d,#19a85c,#063d20);
+    border-radius:20px;
+    transform-origin:bottom;
+}
+
+.tallo:nth-child(1){
+    transform:rotate(-35deg);
+}
+
+.tallo:nth-child(2){
+    transform:rotate(-20deg);
+}
+
+.tallo:nth-child(3){
+    transform:rotate(-8deg);
+}
+
+.tallo:nth-child(4){
+    transform:rotate(8deg);
+}
+
+.tallo:nth-child(5){
+    transform:rotate(20deg);
+}
+
+.tallo:nth-child(6){
+    transform:rotate(35deg);
+}
+
+/* FLORES */
+
+.flores{
+    position:absolute;
+    width:100%;
+    height:400px;
+    top:25px;
+    left:0;
+}
+
+.flor{
+    position:absolute;
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,#fff 0 10%,transparent 11%),
+        conic-gradient(
+            #0077ff 0deg 30deg,
+            #6dcaff 30deg 60deg,
+            #0061d9 60deg 90deg,
+            #8bd8ff 90deg 120deg,
+            #0077ff 120deg 150deg,
+            #6dcaff 150deg 180deg,
+            #0061d9 180deg 210deg,
+            #8bd8ff 210deg 240deg,
+            #0077ff 240deg 270deg,
+            #6dcaff 270deg 300deg,
+            #0061d9 300deg 330deg,
+            #8bd8ff 330deg 360deg
+        );
+    box-shadow:
+        0 0 15px #008cff,
+        0 0 40px rgba(0,130,255,.5);
+    animation:flotar 4s ease-in-out infinite;
+}
+
+.flor::after{
+    content:"";
+    position:absolute;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:#ffe98a;
+    left:40px;
+    top:40px;
+    box-shadow:0 0 15px #fff0a0;
+}
+
+.f1{
+    left:35px;
+    top:100px;
+    transform:rotate(-15deg);
+}
+
+.f2{
+    left:145px;
+    top:25px;
+    transform:rotate(8deg);
+    animation-delay:.5s;
+}
+
+.f3{
+    left:275px;
+    top:45px;
+    transform:rotate(-5deg);
+    animation-delay:1s;
+}
+
+.f4{
+    right:45px;
+    top:110px;
+    transform:rotate(15deg);
+    animation-delay:1.5s;
+}
+
+.f5{
+    left:105px;
+    top:175px;
+    transform:scale(.85);
+    animation-delay:2s;
+}
+
+.f6{
+    right:120px;
+    top:185px;
+    transform:scale(.85);
+    animation-delay:2.5s;
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-8px;
+    }
+
+}
+
+/* HOT WHEELS */
+
+.hotwheels{
+    position:absolute;
+    inset:0;
+    z-index:4;
+}
+
+.carro{
+    position:absolute;
+    width:180px;
+    max-width:30%;
+    object-fit:contain;
+    filter:
+        drop-shadow(0 8px 5px rgba(0,0,0,.7))
+        drop-shadow(0 0 12px rgba(0,150,255,.5));
+    transition:.4s;
+    animation:carroFlota 4s ease-in-out infinite;
+}
+
+.carro:hover{
+    transform:scale(1.12) rotate(0deg) !important;
+    filter:
+        drop-shadow(0 12px 8px rgba(0,0,0,.8))
+        drop-shadow(0 0 25px #00aaff);
+}
+
+.carro1{
+    top:120px;
+    left:65px;
+    transform:rotate(-12deg);
+}
+
+.carro2{
+    top:55px;
+    left:235px;
+    transform:rotate(8deg);
+    animation-delay:.7s;
+}
+
+.carro3{
+    top:100px;
+    right:55px;
+    transform:rotate(12deg);
+    animation-delay:1.3s;
+}
+
+.carro4{
+    top:205px;
+    left:225px;
+    transform:rotate(-3deg);
+    animation-delay:2s;
+}
+
+@keyframes carroFlota{
+
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-9px;
+    }
+
+}
+
+/* PAPEL DEL RAMO */
+
+.papel{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:470px;
+    height:210px;
+    background:
+        linear-gradient(135deg,#dff7ff,#8ddaff,#c7f2ff);
+    clip-path:polygon(
+        5% 0,
+        95% 0,
+        75% 100%,
+        50% 82%,
+        25% 100%
+    );
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.5),
+        inset 0 0 25px rgba(255,255,255,.5);
+    z-index:5;
+}
+
+.papel::after{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:2px solid rgba(255,255,255,.45);
+    clip-path:inherit;
+}
+
+/* CINTA */
+
+.cinta{
+    position:absolute;
+    bottom:115px;
+    left:50%;
+    transform:translateX(-50%);
+    width:125px;
+    height:35px;
+    border-radius:8px;
+    background:linear-gradient(90deg,#003e91,#009dff,#003e91);
+    box-shadow:0 0 20px rgba(0,140,255,.6);
+    z-index:8;
+}
+
+.cinta::before,
+.cinta::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:55px;
+    background:linear-gradient(135deg,#008cff,#003e91);
+    top:-10px;
+    border-radius:50% 10% 50% 10%;
+}
+
+.cinta::before{
+    left:-60px;
+    transform:rotate(25deg);
+}
+
+.cinta::after{
+    right:-60px;
+    transform:rotate(-25deg);
+}
+
+/* REGALO */
+
+.regalo{
+    width:300px;
+    height:210px;
+    margin:45px auto 30px;
+    position:relative;
+    cursor:pointer;
+    perspective:900px;
+    z-index:10;
+}
+
+.caja{
+    position:absolute;
+    bottom:0;
+    left:25px;
+    width:250px;
+    height:150px;
+    background:
+        linear-gradient(90deg,#062d63,#0753a3,#062d63);
+    border:2px solid #0b8cff;
+    box-shadow:
+        0 20px 35px rgba(0,0,0,.6),
+        0 0 30px rgba(0,130,255,.3);
+}
+
+.caja::before{
+    content:"";
+    position:absolute;
+    left:105px;
+    top:0;
+    width:40px;
+    height:100%;
+    background:linear-gradient(90deg,#00aaff,#004da0,#00aaff);
+}
+
+.tapa{
+    position:absolute;
+    top:-28px;
+    left:15px;
+    width:270px;
+    height:45px;
+    background:linear-gradient(90deg,#073875,#0878d1,#073875);
+    border:2px solid #0aa4ff;
+    transform-origin:bottom;
+    transition:1s;
+    z-index:3;
+}
+
+/* ABREME */
+
+.abreme{
+    position:absolute;
+    left:50%;
+    top:52px;
+    transform:translateX(-50%);
+    width:230px;
+    text-align:center;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:5px;
+    color:white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #00bfff,
+        0 0 30px #0077ff;
+    animation:abreme 1.5s infinite alternate;
+    z-index:20;
+}
+
+.abreme small{
+    display:block;
+    margin-top:7px;
+    font-size:11px;
+    letter-spacing:2px;
+    color:#a9ddff;
+}
+
+@keyframes abreme{
+
+    from{
+        transform:translateX(-50%) scale(1);
+        opacity:.8;
+    }
+
+    to{
+        transform:translateX(-50%) scale(1.08);
+        opacity:1;
+    }
+
+}
+
+/* EFECTO AL ABRIR */
+
+.regalo.abierto .tapa{
+    transform:rotateX(65deg) translateY(-15px);
+}
+
+.regalo.abierto .abreme{
+    opacity:0;
+    transform:translateX(-50%) scale(.5);
+}
+
+/* LUCES */
+
+.luz{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:
+        0 0 10px #00aaff,
+        0 0 20px #008cff;
+    animation:particula 5s linear infinite;
+}
+
+.l1{left:10%;top:30%;}
+.l2{left:80%;top:25%;animation-delay:1s;}
+.l3{left:20%;top:75%;animation-delay:2s;}
+.l4{left:90%;top:70%;animation-delay:3s;}
+.l5{left:50%;top:15%;animation-delay:4s;}
+
+@keyframes particula{
+
+    0%{
+        opacity:0;
+        transform:translateY(0);
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-100px);
+    }
+
+}
+
+/* CARTA */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(10px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+    padding:20px;
+}
+
+.modal.activo{
+    display:flex;
+}
+
+.carta{
+    width:520px;
+    max-width:95%;
+    padding:45px;
+    background:
+        linear-gradient(145deg,#f8fdff,#d9f4ff);
+    color:#10243b;
+    border-radius:18px;
+    border:2px solid #6dd5ff;
+    box-shadow:
+        0 0 30px rgba(0,170,255,.6),
+        0 25px 80px rgba(0,0,0,.7);
+    text-align:center;
+    animation:aparecer .7s ease;
+    position:relative;
+}
+
+.carta h2{
+    color:#006cc7;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.carta p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.cerrar{
+    margin-top:25px;
+    border:0;
+    background:#006cc7;
+    color:white;
+    padding:12px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.cerrar:hover{
+    background:#008ee8;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:scale(.7) translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .titulo h1{
+        font-size:28px;
+    }
+
+    .ramo{
+        height:520px;
+    }
+
+    .flor{
+        width:75px;
+        height:75px;
+    }
+
+    .flor::after{
+        width:18px;
+        height:18px;
+        left:28px;
+        top:28px;
+    }
+
+    .carro{
+        width:130px;
+    }
+
+    .carro1{
+        left:20px;
+    }
+
+    .carro2{
+        left:125px;
+    }
+
+    .carro3{
+        right:10px;
+    }
+
+    .carro4{
+        left:120px;
+        top:180px;
+    }
+
+    .papel{
+        width:350px;
+    }
+
+    .regalo{
+        transform:scale(.9);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LUCES -->
+
+<div class="luz l1"></div>
+<div class="luz l2"></div>
+<div class="luz l3"></div>
+<div class="luz l4"></div>
+<div class="luz l5"></div>
+
+<!-- TITULO -->
+
+<div class="titulo">
+
+    <h1>UN RAMO DIFERENTE 💙</h1>
+
+    <p>
+        Porque no todos los ramos tienen que ser de flores...
+    </p>
+
+</div>
+
+
+<!-- RAMO -->
+
+<div class="ramo">
+
+    <!-- FLORES -->
+
+    <div class="flores">
+
+        <div class="flor f1"></div>
+        <div class="flor f2"></div>
+        <div class="flor f3"></div>
+        <div class="flor f4"></div>
+        <div class="flor f5"></div>
+        <div class="flor f6"></div>
+
+    </div>
+
+
+    <!-- TALLOS -->
+
+    <div class="tallos">
+
+        <div class="tallo"></div>
+        <div class="tallo"></div>
+        <div class="tallo"></div>
+        <div class="tallo"></div>
+        <div class="tallo"></div>
+        <div class="tallo"></div>
+
+    </div>
+
+
+    <!-- HOT WHEELS REALES -->
+
+    <div class="hotwheels">
+
+        <img
+            class="carro carro1"
+            src="img/AMARILLO.png"
+            alt="Hot Wheels">
+
+        <img
+            class="carro carro2"
+            src="img/Hot-Wheels-Car-PNG.png"
+            alt="Hot Wheels">
+
+        <img
+            class="carro carro3"
+            src="img/BLANCO.png"
+            alt="Hot Wheels">
+
+        <img
+            class="carro carro4"
+            src="img/gris.png"
+            alt="Hot Wheels">
+
+    </div>
+
+
+    <!-- PAPEL -->
+
+    <div class="papel"></div>
+
+    <!-- CINTA -->
+
+    <div class="cinta"></div>
+
+</div>
+
+
+<!-- REGALO -->
+
+<div
+    class="regalo"
+    id="regalo"
+    onclick="abrirRegalo()"
+>
+
+    <div class="caja">
+
+        <div class="abreme">
+
+            ÁBREME
+
+            <small>
+                ✦ toca aquí ✦
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="tapa"></div>
+
+</div>
+
+
+<!-- CARTA -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="carta">
+
+        <h2>💙 Para ti 💙</h2>
+
+        <p>
+            Tal vez no es un ramo físico,
+            pero es con la mejor intención.
+            <br><br>
+
+            Solo te diré algo...
+            algo mejor está en proceso,
+            algo mejor que un ramo.
+            <br><br>
+
+            Por eso no es un ramo así físico. 💙
+        </p>
+
+        <button
+            class="cerrar"
+            onclick="cerrarCarta(event)"
+        >
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function abrirRegalo(){
+
+    const regalo = document.getElementById("regalo");
+    const modal = document.getElementById("modal");
+
+    regalo.classList.add("abierto");
+
+    setTimeout(() => {
+
+        modal.classList.add("activo");
+
+    }, 650);
+
+}
+
+
+function cerrarCarta(event){
+
+    event.stopPropagation();
+
+    const modal = document.getElementById("modal");
+    const regalo = document.getElementById("regalo");
+
+    modal.classList.remove("activo");
+
+    setTimeout(() => {
+
+        regalo.classList.remove("abierto");
+
+    }, 300);
+
+}
+
+</script>
+
+</body>
+</html>
